@@ -1,0 +1,14 @@
+.th-height {
+  height: 100vh;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .th-display {
+    display: none;
+  }
+
+  .th-height {
+    height: 10vh;
+  }
+}
