@@ -24,7 +24,7 @@ class Main extends Component {
             <div className="p-5">
               <Link to="/signup">
                 <button type="button" className="btn btn-primary px-4">
-                  Login
+                  Signup
                 </button>
               </Link>
             </div>
