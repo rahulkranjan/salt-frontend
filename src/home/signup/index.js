@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate(`/dashboard`);
+    }
+  }, []);
   async function signup() {
     let item = { name, email, contact, password };
     console.warn(item);
@@ -20,9 +26,10 @@ const Signup = () => {
         },
       }
     );
-
-    result = await result.json();
-    console.warn(result);
+    console.log(result);
+    if (result.status === 201) {
+      navigate(`/login`);
+    }
   }
 
   return (
@@ -33,55 +40,52 @@ const Signup = () => {
             <h1 className="text-center">Signup</h1>
           </div>
         </div>
-
         <div className="col-md-4 ">
           <div className="card ">
             <div className="card-body">
-              <form>
-                <div className="form-group">
-                  <label>Name</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                  <label>Contact</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    aria-describedby="contactHelp"
-                    value={contact}
-                    onChange={(e) => setContact(e.target.value)}
-                  />
-                </div>
-                <label for="exampleInputEmail1">Email address</label>
+              <div className="form-group">
+                <label>Name</label>
                 <input
-                  type="email"
+                  type="text"
                   className="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                ></input>
-                <div className="form-group">
-                  <label htmlFor="exampleInputPassword1">Password</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="exampleInputPassword1"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                  onClick={signup}
-                >
-                  Create Account
-                </button>
-              </form>
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <label>Contact</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  aria-describedby="contactHelp"
+                  value={contact}
+                  onChange={(e) => setContact(e.target.value)}
+                />
+              </div>
+              <label for="exampleInputEmail1">Email address</label>
+              <input
+                type="email"
+                className="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              ></input>
+              <div className="form-group">
+                <label htmlFor="exampleInputPassword1">Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="exampleInputPassword1"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <button
+                type="submit"
+                className="btn btn-primary"
+                onClick={signup}
+              >
+                Create Account
+              </button>
             </div>
           </div>
         </div>
