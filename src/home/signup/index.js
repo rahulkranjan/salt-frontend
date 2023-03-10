@@ -15,21 +15,23 @@ const Signup = () => {
   async function signup() {
     let item = { name, email, contact, password };
     console.warn(item);
-    let result = await fetch(
-      "https://web-production-df525.up.railway.app/apiV1/user/",
-      {
-        method: "POST",
-        body: JSON.stringify(item),
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }
-    );
+    let result = await fetch("http://127.0.0.1:8000/apiV1/user/", {
+      method: "POST",
+      body: JSON.stringify(item),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    }).catch((err) => {
+      console.log(err);
+    });
     console.log(result);
     if (result.status === 201) {
       navigate(`/login`);
     }
+    // else if (result.status === 302) {
+    //   alert(result.error);
+    // }
   }
 
   return (

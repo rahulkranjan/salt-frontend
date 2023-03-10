@@ -7,9 +7,9 @@ const Login = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      navigate(`/dashboard`);
+      navigate(`/`);
     }
-  }, []);
+  }, [navigate]);
 
   async function login() {
     let item = { contact, password };

@@ -1,7 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Poppins:wght@600&display=swap');
+
+body {
+  font-family: 'Dancing Script', cursive;
+}
 .th-height {
   height: 100vh;
 }
+.th-background {
+  /* background: url(static/bg.png); */
+  background-size: cover;
+  height: 100vh;
+}
 
+li {
+  font-weight: 400;
+}
+
+h1 {
+  font-weight: 600;
+  /* font-family: 'Poppins', sans-serif; */
+}
+
+.floating-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.floating-btn:hover {
+  background-color: #0062cc;
+}
+
+.content {
+  background-color: transparent;
+
+}
 
 @media only screen and (max-width: 600px) {
   .th-display {
@@ -11,4 +53,13 @@
   .th-height {
     height: 10vh;
   }
+.th-background {
+  background: url(static/phone.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* position: fixed; */
+  height: 100vh;
+  width: 100vw;
+}
 }
